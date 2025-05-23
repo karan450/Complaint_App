@@ -1,0 +1,193 @@
+.trash_container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding-bottom: 100px;
+  }
+  
+  .trash_title {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #800000;
+  }
+
+  .firstLabel{
+    margin-top: 25px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin-top: 5px;
+    color: #555;
+  }
+  
+  .form-control-file {
+    margin-top: 10px;
+
+  }
+  
+  .btn {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .btn:hover {
+    background-color: #0069d9;
+  }
+  
+  .back_btn{
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    margin: 10px 20px;
+    font-size: 2rem;
+    border-radius: 50%;
+    transform: rotate(0deg);
+    transition: all 0.5s;
+    background-color: rgb(209, 225, 250);
+    cursor: pointer;
+  }
+
+  .back_btn:hover{
+    transform: rotate(360deg);
+    color: red;
+  }
+
+/* Style for the file input */
+.file-input {
+    position: relative;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+  
+  .file-input input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Style for the button */
+  .file-input label {
+    display: inline-block;
+    background-color: #0077FF;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  /* Style for the button on hover */
+  .file-input label:hover {
+    background-color: #0052D4;
+  }
+  
+  /* Style for the file control */
+  .file_control {
+    border: none;
+    border-radius: 5px;
+    background-color: #F7F7F7;
+    color: #6E6E6E;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+
+/* special tootltip for streelight complaint form */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -100px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 14px;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+
+  @media screen and (max-width: 600px) {
+    .container {
+      padding: 10px;
+    }
+  
+    .form-control, .form-control-file {
+      font-size: 14px;
+    }
+
+    .back_btn{
+        height: 42px;
+        width: 42px;
+        margin-left: 6px;
+        margin-top: 6px;
+        font-size: 1.75em;
+    }
+
+    .trash_title{
+      margin-top: 40px;
+    }
+  }
+  

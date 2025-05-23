@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e10373e5.css",
+    "main.js": "/static/js/main.7898d9ff.js",
+    "static/js/787.2035ca37.chunk.js": "/static/js/787.2035ca37.chunk.js",
+    "static/media/dashlogo.png": "/static/media/dashlogo.38bdd8ef50a7b5091790.png",
+    "static/media/animalwellfare.jpg": "/static/media/animalwellfare.1cd8d520d0b94a2895fe.jpg",
+    "static/media/logo.png": "/static/media/logo.8c6d0733f6077079ff51.png",
+    "static/media/gujarat.png": "/static/media/gujarat.b53763817000144060c1.png",
+    "static/media/cvc.jpg": "/static/media/cvc.d626f3d3c49d46c79340.jpg",
+    "static/media/dump.png": "/static/media/dump.3f5775be3f46b4a63679.png",
+    "static/media/drop.png": "/static/media/drop.a27c5a9c96eaa1a4254a.png",
+    "static/media/pothole.png": "/static/media/pothole.2cb328f0a971c09dfff7.png",
+    "static/media/user.png": "/static/media/user.33e7df0963941edbeb70.png",
+    "static/media/call.png": "/static/media/call.9ecec675bca004b7d120.png",
+    "index.html": "/index.html",
+    "main.e10373e5.css.map": "/static/css/main.e10373e5.css.map",
+    "main.7898d9ff.js.map": "/static/js/main.7898d9ff.js.map",
+    "787.2035ca37.chunk.js.map": "/static/js/787.2035ca37.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e10373e5.css",
+    "static/js/main.7898d9ff.js"
+  ]
+}

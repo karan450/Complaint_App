@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;	
+}
+
+
+.container {
+	display: flex;
+	justify-content: center;
+    padding-top: 100px;
+	height: 100vh;
+    width: 100%;
+    /* border : 2px solid red;     */
+}
+
+.screen {		
+	background-color: white;		
+	position: relative;	
+	height: 70%;
+	width: 400px;	
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(1.2);
+    /* border: 2px solid red; */
+}
+.loginlogo{
+    width: 250px;
+    position: relative;
+    top : 30px;
+}
+
+@media (max-width : 600px) {
+    .screen{
+        height: 100%;
+        width: 100%;
+        padding-bottom: 200px;
+        transform: scale(1);
+    }
+
+    .loginlogo{
+        width: 200px;
+    }
+}
+
+.screen__content {
+	z-index: 1;
+	position: relative;	
+	height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login {
+	width: 320px;
+	padding: 30px;
+    border: 2px solid black;
+}
+
+
+
+.login__field {
+	padding: 20px 0px;	
+	position: relative;	
+    /* border: 2px solid red; */
+}
+
+.login__icon {
+	position: absolute;
+	top: 30px;
+	color: #7875B5;
+}
+
+.login__input {
+	border: none;
+	border-bottom: 2px solid #686872;
+	background: none;
+	padding: 10px;
+	padding-left: 24px;
+	font-weight: 700;
+	width: 85%;
+	transition: .2s;
+    font-size: 1rem;
+    color: black;
+}
+
+.login__input:active,
+.login__input:focus,
+.login__input:hover {
+	outline: none;
+	border-bottom-color: #90ff71;
+}
+
+.login__submit {
+	background: #fff;
+	font-size: 14px;
+	margin-top: 30px;
+	padding: 10px 15px;
+	border-radius: 6px;
+	border: 1px solid #D4D3E8;
+	text-transform: uppercase;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	width: 35%;
+	color: #442018;
+	box-shadow: 0px 2px 2px #5C5696;
+	cursor: pointer;
+	transition: .2s;
+}
+
+.login__submit:active,
+.login__submit:focus,
+.login__submit:hover {
+	border-color: #ffffff;
+    background-color: #90ff71;
+    color: white;
+	outline: none;
+}
+
+.newaccount{
+    margin-top: 20px;
+}
+/* removing the arrows of input number field  */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* validtor style */
+
+.validator{
+    display: none;
+    height: 30px;
+    min-width: 200px;
+    font-size: 0.75rem;
+    color: red;
+	font-weight: 550;
+	letter-spacing: 0.5px;
+}
+
+
+
+/* loading spinner css  */

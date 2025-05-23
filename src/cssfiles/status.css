@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Noto+Serif:wght@700&display=swap');
+
+.complaint_container{
+    width: 100%;
+    height: 85vh;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start; */
+    padding-top: 50px;
+    overflow-y: scroll;
+    border-radius: 30px;
+    padding-left: 30px;
+    margin: auto;
+}
+
+
+.complaint-card {
+    position: relative;
+    height: 100px;
+    max-height: none;
+    width: 90%;
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    background-color: rgba(222, 222, 206, 0.473);
+    user-select: none;
+    line-height: 35px;
+  }
+  
+  .complaint-card:hover {
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .complaint-card h3 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    color: #333;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Noto Serif', serif;
+  }
+  
+  .complaint-card .complaint-info {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .complaint-card .complaint-info p {
+    margin: 0;
+  }
+  
+  .complaint-card .complaint-info strong {
+    margin-right: 0.5rem;
+  }
+  
+  .complaint-card-header{
+    position: relative;
+  }
+
+
+  .updownicon{
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 0px 15px;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    font-size: 20px;
+    background-color: rgb(122, 122, 122);
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .activecomplaint{
+    height: 330px ;
+  }
+
+.status{
+    font-size: 22px;
+    color: green;
+    font-weight: 500;
+}
+
+.statusvalue{
+    font-size: 18px;
+    width: auto;
+    color: green;
+    font-size: 18px;
+}
+
+.statuswrapper{
+  background-color: rgba(222, 222, 206, 0.345);
+  font-family: 'Lato', sans-serif;
+  font-family: 'Noto Serif', serif;
+}
+
+.complaintid{
+    font-weight: 600;
+}
+.cancelBtn{
+    height: 30px;
+    width: 90px;
+    color: red;
+    font-weight: 600;
+    background-color: transparent;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-left: 15px;
+    margin-bottom: 20px;
+}
+
+.cancelBtn:hover{
+    transform: translateY(-2px) scale(0.95);
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(45, 44, 44, 0.573);
+}
+.cancelIcon{
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: large;
+    margin-left: 5px;
+    margin-top: 4px;
+}
+
+.status_image{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+  font-size: 100px;
+  color: rgba(36, 34, 34, 0.137);
+  user-select: none;
+}
+
+@media screen and (max-width : 900px) {
+  .complaint-card{
+    height: 150px;
+}
+  .activecomplaint{
+    height: 400px;
+  }
+}
+
+@media screen and (max-width : 600px) {
+    .complaint-card{
+        height: 200px;
+    }
+    .activecomplaint{
+      height: 400px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+  
+  .complaint_container{
+    padding: 0;
+  }
+  
+  .complaint-card{
+    height: 250px;
+    font-size: 12px;
+}
+  .activecomplaint{
+    height: 450px;
+  }
+  .statusvalue{
+    font-size: 12px;
+  }
+  .updownicon{
+    top: 150px;
+  }
+}
