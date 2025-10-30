@@ -17,7 +17,7 @@ export default function Inprogress(props) {
 			.catch((error) => {
 				console.log(error);
 			});
-	}, []);
+	});
 
 	const complaitscard = data.map((c) => {
 		return (

@@ -4,7 +4,10 @@ import Adcomplaintcard from "./ad_complaintcard";
 
 export default function Pending(props) {
 	const number = 0;
+	console.log(props.table, "this is table name");
+	console.log(props.title, "this is title");
 	const [data, setData] = useState([]);
+	console.log(data);
 	useEffect(() => {
 		axios
 			.post(`${process.env.REACT_APP_API_URL}/fetchdata.php`, {
@@ -17,7 +20,7 @@ export default function Pending(props) {
 			.catch((error) => {
 				console.log(error);
 			});
-	}, []);
+	});
 	let complaitscard;
 	if (data !== null && data.length > 0) {
 		complaitscard = data.map((c) => {
@@ -43,7 +46,6 @@ export default function Pending(props) {
 				/>
 			);
 		});
-	} else {
 	}
 
 	return <>{complaitscard}</>;

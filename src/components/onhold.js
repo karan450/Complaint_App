@@ -17,7 +17,7 @@ export default function Onhold(props) {
 			.catch((error) => {
 				console.log(error);
 			});
-	}, []);
+	});
 
 	const complaitscard = data.map((c) => {
 		return (
