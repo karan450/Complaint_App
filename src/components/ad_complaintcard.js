@@ -29,11 +29,11 @@ export default function Adcomplaintcard(props) {
 				if (response.data.status === "1") {
 					alert("SENT TO ON HOLD");
 				}
+				props.onStatusChange();
 			});
 	}
 
 	function sendtoworker() {
-		console.log("sending to worker");
 		axios
 			.post(`${process.env.REACT_APP_API_URL}/onhold.php`, {
 				table: props.table,
@@ -44,6 +44,7 @@ export default function Adcomplaintcard(props) {
 				if (response.data.status === "1") {
 					alert("SENT TO PROGRESS");
 				}
+				props.onStatusChange();
 			});
 	}
 
@@ -58,6 +59,7 @@ export default function Adcomplaintcard(props) {
 				if (response.data.status === "1") {
 					alert("SET AS RESOLVE");
 				}
+				props.onStatusChange();
 			});
 	}
 
@@ -72,6 +74,7 @@ export default function Adcomplaintcard(props) {
 				if (response.data.status === "1") {
 					alert("DELETED SUCCESSFULLY");
 				}
+				props.onStatusChange();
 			});
 	}
 

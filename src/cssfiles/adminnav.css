@@ -1,154 +1,151 @@
-
-
-.ad_navbar{
-
-    height: 100vh;
-    width: 0%;
-    flex-direction: column;
-    background-color: #333333;
-    justify-content: flex-end;
-    overflow: hidden;
-    visibility: hidden; /* initially hide the element */
-    transform: translateX(-100%); /* move the element off-screen */
-    transition: visibility 0s linear 0.5s, transform 0.5s ease-in-out, width 0.5s ease-in-out;
-    
+.ad_navbar {
+	height: 100vh;
+	width: 0%;
+	flex-direction: column;
+	background-color: #333333;
+	justify-content: flex-end;
+	overflow: hidden;
+	visibility: hidden; /* initially hide the element */
+	transform: translateX(-100%); /* move the element off-screen */
+	transition: visibility 0s linear 0.5s, transform 0.5s ease-in-out,
+		width 0.5s ease-in-out;
 }
 .ad_navbar.ad_navbar_active {
-    width: 20%;
-    visibility: visible; /* show the element when it is active */
-    transform: translateX(0); /* slide the element into view */
-    display: inline-flex;
-    transition: visibility 0s linear 0s, transform 0.5s ease-in-out; /* remove the delay from the visibility transition and keep the transition for the transform */
-  }
-
-.toggler{
-    position: absolute;
-    top: 0;
-    left: 0;
-    text-align: center;
-    padding-top: 11px;
-    margin-left: 10px;
-    margin-top: 5px;
-    height: 50px;
-    width: 50px;
-    border-radius: 40px;
-    z-index: 2;
-    background-color: white;
-    color: black;
-    transition: all 0.5s;
-}
-.toggler:hover{
-    cursor: pointer;
-    background-color: rgb(30, 255, 236);
+	width: 20%;
+	visibility: visible; /* show the element when it is active */
+	transform: translateX(0); /* slide the element into view */
+	display: inline-flex;
+	transition: visibility 0s linear 0s, transform 0.5s ease-in-out; /* remove the delay from the visibility transition and keep the transition for the transform */
 }
 
-.toggler_active{
-    border-radius: 50%;
-    background-color: white;
-    color: black;
-    font-size: 20px;
+.toggler {
+	position: absolute;
+	top: 0;
+	left: 0;
+	text-align: center;
+	padding-top: 11px;
+	margin-left: 10px;
+	margin-top: 5px;
+	height: 50px;
+	width: 50px;
+	border-radius: 40px;
+	z-index: 2;
+	background-color: white;
+	color: black;
+	transition: all 0.5s;
+}
+.toggler:hover {
+	cursor: pointer;
+	background-color: rgb(30, 255, 236);
 }
 
-.navitem_warpper{
-    /* border: 2px solid red; */
-    height: 300px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;    
-    flex-basis: 120px;
+.toggler_active {
+	border-radius: 50%;
+	background-color: white;
+	color: black;
+	font-size: 20px;
 }
 
-.ad_navitems{
-    /* border: 2px solid red; */
-    text-decoration: none;
-    width: 98%;
-    height: 70px;
-    text-align: center;
-    font-size: 18px;
-    padding-top: 20px;
-    color: #FFFFFF;
-    user-select: none;
+.navitem_warpper {
+	/* border: 2px solid red; */
+	height: 300px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	flex-basis: 120px;
 }
 
-.ad_navitems:hover{
-    color: rgb(30, 255, 236);
+.ad_navitems {
+	/* border: 2px solid red; */
+	text-decoration: none;
+	width: 98%;
+	height: 70px;
+	text-align: center;
+	font-size: 18px;
+	padding-top: 20px;
+	color: #ffffff;
+	user-select: none;
 }
 
-.ad_active{
-    background-color: white;
-    color: black;
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px;
+.ad_navitems:hover {
+	color: rgb(30, 255, 236);
 }
 
-.ad_active:hover{
-    color: black;
+.ad_active {
+	background-color: white;
+	color: black;
+	border-top-left-radius: 50px;
+	border-bottom-left-radius: 50px;
 }
 
-.adminContent{
-    top: 0;
-    position: absolute;
-    height: 100vh;
-    display: inline-block;
-    width: 100%;
-    overflow-y: scroll;
-    /* border: 2px solid red; */
+.ad_active:hover {
+	color: black;
 }
 
-.logouticon{
-    height: 50px;
-    width: 50px;
-    background-color: transparent;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin-left: 70px;
-    margin-top: 10px;
-    color: white;
-    font-size: 30px;
-    text-align: center;
-    z-index: 3;
-    border: none;
-    cursor: pointer;
+.adminContent {
+	top: 0;
+	position: absolute;
+	height: 100vh;
+	display: inline-block;
+	width: 100%;
+	overflow-y: scroll;
+	/* border: 2px solid red; */
 }
 
-.logouticon:hover{
-    color: rgb(30, 255, 236);
+.logouticon {
+	height: 50px;
+	width: 50px;
+	background-color: transparent;
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin-left: 70px;
+	margin-top: 10px;
+	color: white;
+	font-size: 30px;
+	text-align: center;
+	z-index: 3;
+	border: none;
+	cursor: pointer;
 }
 
-.admincontent_active{
-    width: 80%;
-    margin-left: 0;
+.logouticon:hover {
+	color: rgb(30, 255, 236);
+}
+
+.admincontent_active {
+	width: 80%;
+	margin-left: 0;
 }
 
 @media screen and (max-width: 900px) {
-    .toggler{
-        transform: scale(0.8);
-        margin-top: 0;
-    }
-    .ad_navbar{
-        width: 30%;
-    }
+	.toggler {
+		transform: scale(0.8);
+		margin-top: 0;
+	}
+	.ad_navbar {
+		width: 30%;
+	}
 }
 
 @media screen and (max-width: 700px) {
-    .ad_navbar{
-        min-width: 40%;
-    }
-    .ad_navitems{
-        font-size: 16px;
-    }
-    .toggler{
-        transform: scale(0.8);
-    }
+	.ad_navbar {
+		min-width: 40%;
+	}
+	.ad_navitems {
+		font-size: 16px;
+	}
+	.toggler {
+		transform: scale(0.8);
+	}
 }
 
 @media screen and (max-width: 600px) {
-    .ad_navbar{
-        width: 40%;
-    }
-    .ad_navitems{
-        font-size: 10px;
-        height: 50px;
-    }
+	.ad_navbar {
+		width: 40%;
+	}
+	.ad_navitems {
+		font-size: 10px;
+		height: 50px;
+	}
 }

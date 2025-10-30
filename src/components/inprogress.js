@@ -5,7 +5,7 @@ import Adcomplaintcard from "./ad_complaintcard";
 export default function Inprogress(props) {
 	const number = 0;
 	const [data, setData] = useState([]);
-	useEffect(() => {
+	const fetchData = () => {
 		axios
 			.post(`${process.env.REACT_APP_API_URL}/fetchdata.php`, {
 				table: props.table,
@@ -17,7 +17,10 @@ export default function Inprogress(props) {
 			.catch((error) => {
 				console.log(error);
 			});
-	});
+	};
+	useEffect(() => {
+		fetchData();
+	}, [props.table]);
 
 	const complaitscard = data.map((c) => {
 		return (
@@ -39,6 +42,7 @@ export default function Inprogress(props) {
 				billnumber={c.billnumber}
 				streetlightno={c.streetlightno}
 				table={props.table}
+				onStatusChange={fetchData}
 			/>
 		);
 	});

@@ -1,108 +1,105 @@
-
-
-.complaint__card_container{
-    position: relative;
-    height: 200px;
-    width: 80%;
-    padding: 15px;
-    margin: auto;
-    border-radius: 10px;
-    background-color: rgb(229, 229, 229);
-    border: 2px solid green;
-    box-shadow: -2px -2px 5px rgb(177, 173, 173);
+.complaint__card_container {
+	position: relative;
+	height: 200px;
+	width: 80%;
+	padding: 15px;
+	margin: auto;
+	border-radius: 10px;
+	background-color: rgb(229, 229, 229);
+	border: 2px solid green;
+	box-shadow: -2px -2px 5px rgb(177, 173, 173);
 }
 
-.active_cotainer{
-    height: 350px;
+.active_cotainer {
+	height: 350px;
 }
 
-.header_complaint{
-    font-size: 18px;    
-    font-weight: 600;
-    color: green;
-    width: 100%;
-    height: 40px;
-    display: flex;
-    gap: 35px;
-    /* border: 2px solid green; */
+.header_complaint {
+	font-size: 18px;
+	font-weight: 600;
+	color: green;
+	width: 100%;
+	height: 40px;
+	display: flex;
+	gap: 35px;
+	/* border: 2px solid green; */
 }
 
-.desc_complaint{
-    font-size: 18px;
-    color: rgb(242, 39, 39);
-    word-spacing: 4px;
-    letter-spacing: 1px;
+.desc_complaint {
+	font-size: 18px;
+	color: rgb(242, 39, 39);
+	word-spacing: 4px;
+	letter-spacing: 1px;
 }
 
-.body_complaint{
-    letter-spacing: 1px;
+.body_complaint {
+	letter-spacing: 1px;
 }
 
-.ad_logo{
-    position: absolute;
-    bottom: 0;
-    color: blue;
-    cursor: pointer;
-    user-select: none;
+.ad_logo {
+	position: absolute;
+	bottom: 0;
+	color: blue;
+	cursor: pointer;
+	user-select: none;
 }
 
-.ad_logo:hover{
-    text-decoration: underline;
+.ad_logo:hover {
+	text-decoration: underline;
 }
 
-.onhold{
-    /* position: absolute; */
-    margin-top: 20px;
-    margin-right: 10px;
-    height: 40px;
-    width: 160px;
-    cursor: pointer;
-    background-color: rgb(216, 70, 70);
-    color: white;
+.onhold {
+	/* position: absolute; */
+	margin-top: 20px;
+	margin-right: 10px;
+	height: 40px;
+	width: 160px;
+	cursor: pointer;
+	background-color: rgb(216, 70, 70);
+	color: white;
 }
-.onhold:hover{
-    box-shadow: 1px 1px 7px black;
-    transform: translateY(-2px);
+.onhold:hover {
+	box-shadow: 1px 1px 7px black;
+	transform: translateY(-2px);
 }
 
-.worker{
-    /* position: absolute; */
-    
-    margin-top: 20px;
-    height: 40px;
-    width: 160px;
-    cursor: pointer;
-    border-radius: 6px;
-    background-color: rgb(124, 224, 104);
-    color: black;
+.worker {
+	/* position: absolute; */
+
+	margin-top: 20px;
+	height: 40px;
+	width: 160px;
+	cursor: pointer;
+	border-radius: 6px;
+	background-color: rgb(124, 224, 104);
+	color: black;
 }
-.worker:hover{
-    box-shadow: 1px 1px 5px black;
-    transform: translateY(-2px);
+.worker:hover {
+	box-shadow: 1px 1px 5px black;
+	transform: translateY(-2px);
 }
 
 @media screen and (max-width: 600px) {
-    .complaint__card_container{
-        height: 250px;
-    }
-    .active_cotainer{
-        height: 450px;
-    }
-    .ad_logo{
-        left: 20px;
-    }
-    .header_complaint{
-        font-size: 12px;
-        width: 10%;
-        gap: 10px;
-        margin-bottom: 20px;
-    }
-    .header_complaint > *::after{
-        content: "\A";
-        white-space: pre;
-        height: 200px;
-        width: 200px;
-        background-color: black;
-    }
-
+	.complaint__card_container {
+		height: 250px;
+	}
+	.active_cotainer {
+		height: 450px;
+	}
+	.ad_logo {
+		left: 20px;
+	}
+	.header_complaint {
+		font-size: 12px;
+		width: 10%;
+		gap: 10px;
+		margin-bottom: 20px;
+	}
+	.header_complaint > *::after {
+		content: "\A";
+		white-space: pre;
+		height: 200px;
+		width: 200px;
+		background-color: black;
+	}
 }
