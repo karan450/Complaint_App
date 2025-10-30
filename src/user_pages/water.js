@@ -38,6 +38,7 @@ export default function Water() {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
+		console.log(formData);
 		axios
 			.post(`${process.env.REACT_APP_API_URL}/water.php`, formData)
 
