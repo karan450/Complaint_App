@@ -11,19 +11,13 @@ import { useRef, useState } from "react";
 import { useAuth } from "../Aunthentication";
 
 export default function Adminnav(props) {
-	const toggler = useRef();
 	const adminc = useRef();
-	const [toggle, setToggle] = useState(false);
+	const [sidebarOpen, setSidebarOpen] = useState(false);
 	const { logout } = useAuth();
 	const navigate = useNavigate();
 
 	function handleToggle() {
-		setToggle(!toggle);
-		const admincontent = document.querySelector(".adminContent");
-		adminc.current.classList.toggle("admincontent_active");
-		const navbar = document.querySelector(".ad_navbar");
-		toggler.current.classList.toggle("toggler_active");
-		navbar.classList.toggle("ad_navbar_active");
+		setSidebarOpen((prev) => !prev);
 	}
 
 	function handlelogout() {
@@ -32,20 +26,28 @@ export default function Adminnav(props) {
 	}
 
 	return (
-		<>
-			<div className="toggler" ref={toggler} onClick={handleToggle}>
-				{toggle ? (
-					<FontAwesomeIcon icon={faXmark} />
-				) : (
-					<FontAwesomeIcon icon={faBars} />
-				)}
+		<div className={`layout ${sidebarOpen ? "sidebar-active" : ""}`}>
+			{/* top-left controls (toggler + logout) */}
+			<div className="topControls">
+				<button
+					className="toggler"
+					onClick={handleToggle}
+					aria-label="Toggle sidebar"
+				>
+					<FontAwesomeIcon icon={sidebarOpen ? faXmark : faBars} />
+				</button>
+
+				<button
+					onClick={handlelogout}
+					className="logouticon"
+					aria-label="Logout"
+				>
+					<FontAwesomeIcon icon={faArrowRightFromBracket} />
+				</button>
 			</div>
 
-			<button onClick={handlelogout} className="logouticon">
-				<FontAwesomeIcon icon={faArrowRightFromBracket} />
-			</button>
-
-			<div className="ad_navbar">
+			{/* sidebar column */}
+			<nav className="ad_navbar" aria-hidden={!sidebarOpen && false}>
 				<div className="navitem_warpper">
 					<NavLink
 						to="/admin/water"
@@ -71,12 +73,12 @@ export default function Adminnav(props) {
 				<div className="navitem_warpper">
 					<NavLink
 						to="/admin"
+						end
 						className={({ isActive }) =>
 							isActive ? `ad_active ad_navitems` : `ad_navitems`
 						}
-						end
 					>
-						Electicity Complaints
+						Electricity Complaints
 					</NavLink>
 				</div>
 
@@ -105,19 +107,23 @@ export default function Adminnav(props) {
 				<div className="navitem_warpper">
 					<NavLink
 						to="/admin/createadmin"
+						end
 						className={({ isActive }) =>
 							isActive ? `ad_active ad_navitems` : `ad_navitems`
 						}
-						end
 					>
 						Create Admin
 					</NavLink>
 				</div>
-			</div>
-			{/* main content of all the pages */}
-			<div className="adminContent" ref={adminc}>
+			</nav>
+
+			{/* main content column */}
+			<main
+				className={`adminContent ${sidebarOpen ? "admincontent_active" : ""}`}
+				ref={adminc}
+			>
 				<Outlet />
-			</div>
-		</>
+			</main>
+		</div>
 	);
 }

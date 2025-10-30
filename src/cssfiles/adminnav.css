@@ -1,151 +1,163 @@
-.ad_navbar {
-	height: 100vh;
-	width: 0%;
-	flex-direction: column;
-	background-color: #333333;
-	justify-content: flex-end;
-	overflow: hidden;
-	visibility: hidden; /* initially hide the element */
-	transform: translateX(-100%); /* move the element off-screen */
-	transition: visibility 0s linear 0.5s, transform 0.5s ease-in-out,
-		width 0.5s ease-in-out;
-}
-.ad_navbar.ad_navbar_active {
-	width: 20%;
-	visibility: visible; /* show the element when it is active */
-	transform: translateX(0); /* slide the element into view */
-	display: inline-flex;
-	transition: visibility 0s linear 0s, transform 0.5s ease-in-out; /* remove the delay from the visibility transition and keep the transition for the transform */
+:root {
+	--nav-width: 240px;
+	--nav-bg: #333;
+	--accent: rgb(30, 255, 236);
 }
 
+/* overall layout: grid with two columns (sidebar + content) */
+.layout {
+	display: grid;
+	grid-template-columns: 0 1fr; /* closed by default */
+	width: 100%;
+	min-height: 100vh;
+	transition: grid-template-columns 0.35s ease;
+	box-sizing: border-box;
+	overflow-x: hidden; /* prevent horizontal scroll during transitions */
+	position: relative;
+}
+
+/* when active, sidebar column gets width */
+.layout.sidebar-active {
+	grid-template-columns: var(--nav-width) 1fr;
+}
+
+/* top controls (toggler + logout) placed above grid content; keep them fixed visually */
+.topControls {
+	position: fixed;
+	top: 12px;
+	left: 12px;
+	display: flex;
+	gap: 8px;
+	z-index: 220;
+}
+
+/* toggler */
 .toggler {
-	position: absolute;
-	top: 0;
-	left: 0;
-	text-align: center;
-	padding-top: 11px;
-	margin-left: 10px;
-	margin-top: 5px;
 	height: 50px;
 	width: 50px;
-	border-radius: 40px;
-	z-index: 2;
-	background-color: white;
-	color: black;
-	transition: all 0.5s;
+	border-radius: 999px;
+	background: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	border: none;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+	transition: transform 0.12s;
 }
 .toggler:hover {
-	cursor: pointer;
-	background-color: rgb(30, 255, 236);
+	transform: scale(1.04);
 }
 
-.toggler_active {
-	border-radius: 50%;
-	background-color: white;
-	color: black;
-	font-size: 20px;
-}
-
-.navitem_warpper {
-	/* border: 2px solid red; */
-	height: 300px;
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	flex-basis: 120px;
-}
-
-.ad_navitems {
-	/* border: 2px solid red; */
-	text-decoration: none;
-	width: 98%;
-	height: 70px;
-	text-align: center;
-	font-size: 18px;
-	padding-top: 20px;
-	color: #ffffff;
-	user-select: none;
-}
-
-.ad_navitems:hover {
-	color: rgb(30, 255, 236);
-}
-
-.ad_active {
-	background-color: white;
-	color: black;
-	border-top-left-radius: 50px;
-	border-bottom-left-radius: 50px;
-}
-
-.ad_active:hover {
-	color: black;
-}
-
-.adminContent {
-	top: 0;
-	position: absolute;
-	height: 100vh;
-	display: inline-block;
-	width: 100%;
-	overflow-y: scroll;
-	/* border: 2px solid red; */
-}
-
+/* logout icon sits right beside toggler */
 .logouticon {
 	height: 50px;
 	width: 50px;
-	background-color: transparent;
-	position: absolute;
-	top: 0;
-	left: 0;
-	margin-left: 70px;
-	margin-top: 10px;
+	border-radius: 8px;
+	background: transparent;
 	color: white;
-	font-size: 30px;
-	text-align: center;
-	z-index: 3;
+	font-size: 20px;
 	border: none;
 	cursor: pointer;
+	padding: 8px;
 }
-
 .logouticon:hover {
-	color: rgb(30, 255, 236);
+	color: var(--accent);
 }
 
+/* sidebar styling - lives in the first grid column so it doesn't change page width */
+.ad_navbar {
+	background: var(--nav-bg);
+	height: 100vh;
+	box-sizing: border-box;
+	padding-top: 150px; /* leave room for topControls */
+	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding-left: 8px;
+	padding-right: 8px;
+	position: sticky;
+	top: 0;
+	z-index: 40;
+}
+
+/* nav items */
+.navitem_warpper {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	padding: 6px 8px;
+	width: 100%;
+	box-sizing: border-box;
+}
+.ad_navitems {
+	display: block;
+	width: 100%;
+	padding: 12px 14px;
+	color: #fff;
+	text-decoration: none;
+	font-size: 15px;
+	border-radius: 8px;
+	box-sizing: border-box;
+}
+.ad_navitems:hover {
+	color: var(--accent);
+	background: rgba(255, 255, 255, 0.03);
+}
+.ad_active {
+	background: #fff;
+	color: #000 !important;
+	border-top-left-radius: 24px;
+	border-bottom-left-radius: 24px;
+}
+
+.mainContainerOfCards {
+	overflow-y: scroll;
+}
+
+/* main content column */
+.adminContent {
+	width: 100%;
+	height: 100vh;
+	box-sizing: border-box;
+	/* overflow-y: hidden; */
+	transition: margin-left 0.35s ease;
+}
+
+/* legacy compatibility: if other styles expect this class */
 .admincontent_active {
-	width: 80%;
-	margin-left: 0;
+	/* if you want additional push or style when open, keep small visual tweak here */
 }
 
-@media screen and (max-width: 900px) {
-	.toggler {
-		transform: scale(0.8);
-		margin-top: 0;
+/* small screens: sidebar becomes overlay (full width) */
+@media (max-width: 900px) {
+	:root {
+		--nav-width: 200px;
 	}
-	.ad_navbar {
-		width: 30%;
+	.layout.sidebar-active {
+		grid-template-columns: var(--nav-width) 1fr;
 	}
-}
-
-@media screen and (max-width: 700px) {
-	.ad_navbar {
-		min-width: 40%;
-	}
-	.ad_navitems {
-		font-size: 16px;
-	}
-	.toggler {
-		transform: scale(0.8);
+	.logouticon {
+		font-size: 18px;
 	}
 }
 
-@media screen and (max-width: 600px) {
-	.ad_navbar {
-		width: 40%;
+/* on mobile make sidebar full overlay */
+@media (max-width: 600px) {
+	:root {
+		--nav-width: 100%;
 	}
-	.ad_navitems {
-		font-size: 10px;
-		height: 50px;
+	.layout.sidebar-active {
+		grid-template-columns: var(--nav-width) 1fr;
+	}
+	/* top controls: move logout to right on very small screens */
+	.topControls {
+		left: 8px;
+		right: 8px;
+		gap: 10px;
+	}
+	.logouticon {
+		margin-left: auto;
 	}
 }

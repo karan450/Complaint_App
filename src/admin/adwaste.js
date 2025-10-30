@@ -1,10 +1,9 @@
-import Adminstatus from "../components/adminstatus"
+import Adminstatus from "../components/adminstatus";
 
-export default function Adwaste(){
-
-    return(
-        <div>
-            <Adminstatus title="Waste Management Complaint" table="waste" />
-        </div>
-    )
+export default function Adwaste() {
+	return (
+		<>
+			<Adminstatus title="Waste Management Complaint" table="waste" />
+		</>
+	);
 }

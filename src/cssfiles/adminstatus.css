@@ -1,84 +1,83 @@
 .ad_pagetitle {
-	padding: 20px;
+	padding: 18px 16px;
 	text-align: center;
-	background-color: #333333;
-	color: white;
-	margin: 0;
-	min-height: 70px;
+	background: #333;
+	color: #fff;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	box-sizing: border-box;
+	position: sticky;
+	top: 0;
+	z-index: 50;
 }
 
+/* nav wrapper uses flex and wraps cleanly */
 .navigation_wrapper {
-	width: 100%;
 	display: flex;
+	gap: 8px;
 	flex-wrap: wrap;
-	gap: 1px;
-	background-color: #333333;
 	padding: 10px;
+	background: #333;
+	box-sizing: border-box;
+	justify-content: center;
+	position: sticky;
+	top: 41px;
+	z-index: 40;
+}
+
+/* button base */
+.navigation__button {
+	cursor: pointer;
+	background: transparent;
+	color: #fff;
+	border: none;
+	padding: 10px 14px;
+	min-width: 120px;
+	min-height: 44px;
+	font-size: 14px;
+	border-radius: 8px;
+	transition: background 0.18s, color 0.18s, transform 0.12s;
 	box-sizing: border-box;
 }
-
-.navigation__button {
-	flex: 1;
-	min-width: 120px;
-	min-height: 50px;
-	cursor: pointer;
-	font-size: 14px;
-	background-color: #333333;
-	color: white;
-	border: none;
-	padding: 12px 8px;
-	transition: all 0.3s ease;
-}
-
 .navigation__button:hover {
 	color: rgb(30, 255, 236);
+	transform: translateY(-2px);
 }
 
+/* active style */
 .active__button {
-	background-color: white;
-	color: black;
-	border-radius: 8px 8px 0 0;
+	background: #fff;
+	color: #000;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
-.active__button:hover {
-	color: black;
-}
-
-/* Mobile Styles */
-@media screen and (max-width: 768px) {
-	.ad_pagetitle {
-		font-size: 20px;
-		padding: 15px;
-		min-height: 60px;
-	}
-
-	.navigation__button {
-		font-size: 12px;
-		min-width: 100px;
-		padding: 10px 4px;
-		min-height: 45px;
-	}
-}
-
-@media screen and (max-width: 480px) {
-	.navigation_wrapper {
-		gap: 2px;
-		padding: 5px;
-	}
-
-	.navigation__button {
-		flex: 1 0 calc(50% - 2px); /* 2 buttons per row */
-		font-size: 11px;
-		min-height: 40px;
-		padding: 8px 2px;
-	}
-
+/* responsive */
+@media (max-width: 768px) {
 	.ad_pagetitle {
 		font-size: 18px;
+		padding: 14px;
+	}
+	.navigation__button {
+		min-width: 100px;
+		font-size: 13px;
+		min-height: 42px;
+		padding: 8px 10px;
+	}
+}
+@media (max-width: 480px) {
+	.navigation_wrapper {
+		gap: 6px;
+		padding: 8px;
+	}
+	.navigation__button {
+		flex: 1 0 calc(50% - 8px);
+		min-width: 0;
+		font-size: 12px;
+	}
+	.ad_pagetitle {
+		font-size: 16px;
 		padding: 10px;
 	}
 }

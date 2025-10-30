@@ -1,105 +1,152 @@
 .complaint__card_container {
 	position: relative;
-	height: 200px;
-	width: 80%;
-	padding: 15px;
-	margin: auto;
+	width: min(980px, 80%);
+	margin: 12px auto;
+	padding: 16px;
 	border-radius: 10px;
-	background-color: rgb(229, 229, 229);
-	border: 2px solid green;
-	box-shadow: -2px -2px 5px rgb(177, 173, 173);
+	background: #e5e5e5;
+	border: 1px solid rgba(0, 0, 0, 0.06);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+	box-sizing: border-box;
+	transition: height 0.25s ease, box-shadow 0.15s;
+	overflow: hidden;
 }
 
+/* default compact layout: grid for predictable behaviour */
+.complaint__card_container {
+	display: grid;
+	grid-template-columns: 1fr 140px;
+	grid-template-rows: auto 1fr;
+	gap: 8px 12px;
+	align-items: start;
+	min-height: 120px;
+}
+
+/* expanded state */
 .active_cotainer {
-	height: 350px;
+	grid-template-columns: 1fr 220px;
+	min-height: 240px;
 }
 
+/* header (left top) */
 .header_complaint {
-	font-size: 18px;
-	font-weight: 600;
-	color: green;
-	width: 100%;
-	height: 40px;
+	grid-column: 1 / span 1;
 	display: flex;
-	gap: 35px;
-	/* border: 2px solid green; */
+	gap: 12px;
+	align-items: center;
+	font-size: 14px;
+	font-weight: 600;
+	color: #177a00; /* subtle green */
+	flex-wrap: wrap;
 }
 
+/* description spans left column */
 .desc_complaint {
-	font-size: 18px;
-	color: rgb(242, 39, 39);
-	word-spacing: 4px;
-	letter-spacing: 1px;
+	grid-column: 1 / span 1;
+	font-size: 15px;
+	color: #c62828;
+	margin: 6px 0;
+	word-break: break-word;
 }
 
+/* right column is for image / quick actions */
 .body_complaint {
-	letter-spacing: 1px;
+	grid-column: 1 / span 1;
+	font-size: 14px;
+	line-height: 1.4;
+	color: #222;
 }
 
+/* image placed in right column area */
+.adminImage {
+	grid-column: 2 / 3;
+	width: 100%;
+	max-height: 160px;
+	object-fit: cover;
+	border-radius: 8px;
+	box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12);
+}
+
+/* show more toggle */
 .ad_logo {
-	position: absolute;
-	bottom: 0;
-	color: blue;
+	display: inline-block;
+	margin-top: 8px;
+	color: #0066cc;
 	cursor: pointer;
 	user-select: none;
 }
-
 .ad_logo:hover {
 	text-decoration: underline;
 }
 
-.onhold {
-	/* position: absolute; */
-	margin-top: 20px;
-	margin-right: 10px;
+/* buttons */
+.onhold,
+.worker {
+	display: inline-block;
+	padding: 10px 12px;
+	min-width: 130px;
 	height: 40px;
-	width: 160px;
+	border-radius: 6px;
+	border: none;
 	cursor: pointer;
-	background-color: rgb(216, 70, 70);
-	color: white;
+	margin-right: 8px;
+	margin-top: 10px;
+	box-sizing: border-box;
+	transition: transform 0.12s, box-shadow 0.12s;
+}
+.onhold {
+	background: #d84646;
+	color: #fff;
 }
 .onhold:hover {
-	box-shadow: 1px 1px 7px black;
-	transform: translateY(-2px);
+	transform: translateY(-3px);
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .worker {
-	/* position: absolute; */
-
-	margin-top: 20px;
-	height: 40px;
-	width: 160px;
-	cursor: pointer;
-	border-radius: 6px;
-	background-color: rgb(124, 224, 104);
-	color: black;
+	background: #7ce068;
+	color: #111;
 }
 .worker:hover {
-	box-shadow: 1px 1px 5px black;
-	transform: translateY(-2px);
+	transform: translateY(-3px);
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
 }
 
-@media screen and (max-width: 600px) {
+/* responsive */
+@media (max-width: 900px) {
 	.complaint__card_container {
-		height: 250px;
+		grid-template-columns: 1fr;
+		grid-template-rows: auto auto;
+	}
+	.adminImage {
+		grid-column: 1 / -1;
+		max-height: 200px;
 	}
 	.active_cotainer {
-		height: 450px;
+		min-height: 320px;
 	}
-	.ad_logo {
-		left: 20px;
+	.onhold,
+	.worker {
+		min-width: 140px;
 	}
+}
+
+@media (max-width: 480px) {
 	.header_complaint {
-		font-size: 12px;
-		width: 10%;
-		gap: 10px;
-		margin-bottom: 20px;
+		font-size: 13px;
+		gap: 8px;
 	}
-	.header_complaint > *::after {
-		content: "\A";
-		white-space: pre;
-		height: 200px;
-		width: 200px;
-		background-color: black;
+	.desc_complaint {
+		font-size: 14px;
+	}
+	.onhold,
+	.worker {
+		min-width: 48%;
+		padding: 8px;
+		height: 40px;
+		font-size: 13px;
+	}
+	.adminImage {
+		max-height: 160px;
 	}
 }
