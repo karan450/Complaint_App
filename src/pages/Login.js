@@ -37,6 +37,7 @@ export default function Login() {
 			validator.style.display = "block";
 			validator.textContent = "PLEASE ENTER PASSWORD";
 		} else {
+			console.log(process.env.REACT_APP_API_URL);
 			axios
 				.post(`${process.env.REACT_APP_API_URL}/login.php`, inputs)
 				.then((response) => {
