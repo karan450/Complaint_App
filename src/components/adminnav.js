@@ -12,7 +12,7 @@ import { useAuth } from "../Aunthentication";
 
 export default function Adminnav(props) {
 	const adminc = useRef();
-	const [sidebarOpen, setSidebarOpen] = useState(false);
+	const [sidebarOpen, setSidebarOpen] = useState(true);
 	const { logout } = useAuth();
 	const navigate = useNavigate();
 

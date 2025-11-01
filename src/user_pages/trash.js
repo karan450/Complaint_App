@@ -6,11 +6,13 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Showdialougue from "../components/showdialougue";
 import { useAuth } from "../Aunthentication";
+import Loader from "../components/Loader";
 
 export default function Trash() {
 	const { user } = useAuth();
 	const navigate = useNavigate();
 	const [showModal, setShowModal] = useState(false);
+	const [loading, setLoading] = useState(false);
 	const [formData, setFormData] = useState({
 		fullName: "",
 		email: "",
@@ -66,7 +68,7 @@ export default function Trash() {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-
+		setLoading(true);
 		axios
 			.post(`${process.env.REACT_APP_API_URL}/trash.php`, formData)
 
@@ -76,7 +78,6 @@ export default function Trash() {
 				} else if (res.data.status === "2") {
 					navigate("/");
 				} else {
-					console.log(res.data);
 					navigate("/error", {
 						state: {
 							error: res.data.result,
@@ -92,6 +93,9 @@ export default function Trash() {
 						error: error.message,
 					},
 				});
+			})
+			.finally(() => {
+				setLoading(false);
 			});
 
 		setFormData({

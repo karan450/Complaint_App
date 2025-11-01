@@ -52,7 +52,7 @@ function Dashboard(props) {
 					>
 						<img
 							draggable={false}
-							src={require("../images/drop.png")}
+							src={"/images/drop.png"}
 							name="water"
 							alt="water"
 							className="c_img"
@@ -67,7 +67,7 @@ function Dashboard(props) {
 					>
 						<img
 							draggable={false}
-							src={require("../images/dump.png")}
+							src={"/images/dump.png"}
 							alt="garbage"
 							name="garbage"
 							className="c_img"
@@ -85,7 +85,7 @@ function Dashboard(props) {
 					>
 						<img
 							draggable={false}
-							src={require("../images/flash.png")}
+							src={"/images/flash.png"}
 							alt="electricity"
 							name="electricity"
 							className="c_img"
@@ -100,7 +100,7 @@ function Dashboard(props) {
 					>
 						<img
 							draggable={false}
-							src={require("../images/pothole.png")}
+							src={"/images/pothole.png"}
 							alt="pothole"
 							name="pothole"
 							className="c_img"
@@ -115,7 +115,7 @@ function Dashboard(props) {
 					>
 						<img
 							draggable={false}
-							src={require("../images/street.png")}
+							src={"/images/street.png"}
 							alt="streetlight"
 							name="streetlight"
 							className="c_img"

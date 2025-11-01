@@ -3,11 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import "../cssfiles/login.css";
 import axios from "axios";
 import { useAuth } from "../Aunthentication";
-import Admin from "../admin/admin";
+import Loader from "../components/Loader";
 
 export default function Login() {
 	const navigate = useNavigate();
 	const { login } = useAuth();
+	const [loading, setLoading] = useState(false);
 
 	const [inputs, setInputs] = useState({
 		username: "",
@@ -37,7 +38,7 @@ export default function Login() {
 			validator.style.display = "block";
 			validator.textContent = "PLEASE ENTER PASSWORD";
 		} else {
-			console.log(process.env.REACT_APP_API_URL);
+			setLoading(true);
 			axios
 				.post(`${process.env.REACT_APP_API_URL}/login.php`, inputs)
 				.then((response) => {
@@ -60,24 +61,24 @@ export default function Login() {
 							error: error.message,
 						},
 					});
+				})
+				.finally(() => {
+					setLoading(false);
 				});
 		}
 	}
 	return (
 		<>
+			{loading && <Loader />}
 			<div className="l_container">
 				<div className="l_screen">
 					<div className="l_screen__content">
-						<img
-							src={require("../images/logo.png")}
-							className="l_loginlogo"
-							alt="logo"
-						/>
+						<img src={"/images/logo.png"} className="l_loginlogo" alt="logo" />
 						<form className="l_login" onSubmit={onLogin}>
 							<div className="l_login__field">
 								<i className="l_login__icon">
 									<img
-										src={require("../images/user.png")}
+										src={"/images/user.png"}
 										style={{ width: "13px" }}
 										alt="usericon"
 									/>{" "}
@@ -93,7 +94,7 @@ export default function Login() {
 							<div className="l_login__field">
 								<i className="l_login__icon fas fa-lock">
 									<img
-										src={require("../images/padlock.png")}
+										src={"/images/padlock.png"}
 										style={{ width: "13px" }}
 										alt="padlocklogo"
 									/>{" "}

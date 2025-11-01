@@ -34,11 +34,7 @@ export default function Navbar() {
 				<div className="bar"></div>
 				<div className="bar"></div>
 			</div>
-			<img
-				src={require("../images/dashlogo.png")}
-				className="d_img"
-				alt="couldn't load"
-			/>
+			<img src="/images/dashlogo.png" className="d_img" alt="dashlogo" />
 			<ul className={`d_navbar ${isOpen ? "d_active_nav" : ""}`} ref={d_navbar}>
 				<div className="nav-items">
 					<NavLink

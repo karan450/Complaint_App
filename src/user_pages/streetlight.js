@@ -7,11 +7,13 @@ import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "../Aunthentication";
 import Showdialougue from "../components/showdialougue";
 import axios from "axios";
+import Loader from "../components/Loader";
 
 export default function Streetlight() {
 	const navigate = useNavigate();
 	const { user } = useAuth();
 	const [showModal, setShowModal] = useState(false);
+	const [loading, setLoading] = useState(false);
 	const [formData, setFormData] = useState({
 		fullName: "",
 		streetlightno: "",
@@ -38,6 +40,7 @@ export default function Streetlight() {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
+		setLoading(true);
 
 		axios
 			.post(`${process.env.REACT_APP_API_URL}/streetlight.php`, formData)
@@ -48,7 +51,6 @@ export default function Streetlight() {
 				} else if (res.data.status === "2") {
 					navigate("/");
 				} else {
-					console.log(res.data);
 					navigate("/error", {
 						state: {
 							error: res.data.result,
@@ -64,6 +66,9 @@ export default function Streetlight() {
 						error: error.message,
 					},
 				});
+			})
+			.finally(() => {
+				setLoading(false);
 			});
 
 		setFormData({

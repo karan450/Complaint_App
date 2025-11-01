@@ -3,9 +3,11 @@ import { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import Loader from "./Loader";
 
 export default function Adcomplaintcard(props) {
 	const [toggle, setToggle] = useState(false);
+	const [loading, setLoading] = useState(false);
 	const container = useRef();
 	const showmore = useRef();
 
@@ -19,6 +21,7 @@ export default function Adcomplaintcard(props) {
 		container.current.classList.toggle("active_cotainer");
 	}
 	function onhold() {
+		setLoading(true);
 		axios
 			.post(`${process.env.REACT_APP_API_URL}/onhold.php`, {
 				table: props.table,
@@ -30,10 +33,14 @@ export default function Adcomplaintcard(props) {
 					alert("SENT TO ON HOLD");
 				}
 				props.onStatusChange();
+			})
+			.finally(() => {
+				setLoading(false);
 			});
 	}
 
 	function sendtoworker() {
+		setLoading(true);
 		axios
 			.post(`${process.env.REACT_APP_API_URL}/onhold.php`, {
 				table: props.table,
@@ -45,10 +52,14 @@ export default function Adcomplaintcard(props) {
 					alert("SENT TO PROGRESS");
 				}
 				props.onStatusChange();
+			})
+			.finally(() => {
+				setLoading(false);
 			});
 	}
 
 	function resolved() {
+		setLoading(true);
 		axios
 			.post(`${process.env.REACT_APP_API_URL}/onhold.php`, {
 				table: props.table,
@@ -60,10 +71,14 @@ export default function Adcomplaintcard(props) {
 					alert("SET AS RESOLVE");
 				}
 				props.onStatusChange();
+			})
+			.finally(() => {
+				setLoading(false);
 			});
 	}
 
 	function deletecomplaint() {
+		setLoading(true);
 		axios
 			.post(`${process.env.REACT_APP_API_URL}/delete.php`, {
 				table: props.table,
@@ -75,6 +90,9 @@ export default function Adcomplaintcard(props) {
 					alert("DELETED SUCCESSFULLY");
 				}
 				props.onStatusChange();
+			})
+			.finally(() => {
+				setLoading(false);
 			});
 	}
 
@@ -85,6 +103,7 @@ export default function Adcomplaintcard(props) {
 	// special props can be userdatetime,streetlightnumber,electricity bill number, image for trash and pothole,
 	return (
 		<>
+			{loading && <Loader />}
 			<div
 				className="complaint__card_container"
 				ref={container}

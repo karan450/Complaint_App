@@ -6,11 +6,13 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../Aunthentication";
 import axios from "axios";
 import Showdialougue from "../components/showdialougue";
+import Loader from "../components/Loader";
 
 export default function Pothole() {
 	const navigate = useNavigate();
 	const { user } = useAuth();
 	const [showModal, setShowModal] = useState(false);
+	const [loading, setLoading] = useState(false);
 
 	const [formData, setFormData] = useState({
 		fullName: "",
@@ -67,7 +69,7 @@ export default function Pothole() {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-
+		setLoading(true);
 		axios
 			.post(`${process.env.REACT_APP_API_URL}/pothole.php`, formData)
 
@@ -93,6 +95,9 @@ export default function Pothole() {
 						error: error.message,
 					},
 				});
+			})
+			.finally(() => {
+				setLoading(false);
 			});
 
 		setFormData({
@@ -109,6 +114,7 @@ export default function Pothole() {
 
 	return (
 		<>
+			{loading && <Loader />}
 			<button onClick={back_btn} className="back_btn">
 				<FontAwesomeIcon icon={faChevronLeft} />
 			</button>

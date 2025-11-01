@@ -3,9 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import "../cssfiles/register.css";
 import { useAuth } from "../Aunthentication";
 import axios from "axios";
+import Loader from "../components/Loader";
 
 function Register() {
 	const navigate = useNavigate();
+	const [loading, setLoading] = useState(false);
 	const [inputs, setInputs] = useState({
 		username: "",
 		password: "",
@@ -42,6 +44,7 @@ function Register() {
 			validator.style.display = "block";
 			validator.textContent = "INCORRECT MOBILE NUMBER";
 		} else {
+			setLoading(true);
 			//changing login text to loading spiner
 			axios
 				.post(`${process.env.REACT_APP_API_URL}/insert.php`, inputs)
@@ -60,77 +63,86 @@ function Register() {
 						validator.textContent = "USER ALREADY EXIST!!";
 					}
 				})
-				.catch((error) => console.log(error));
+				.catch((error) => console.log(error))
+				.finally(() => {
+					setLoading(false);
+				});
 		}
 	}
 
 	return (
-		<div className="container">
-			<div className="screen">
-				<div className="screen__content">
-					<img src={require("../images/logo.png")} className="loginlogo" />
-					<form className="login" onSubmit={onSignUp}>
-						<div className="login__field">
-							<i className="login__icon fas fa-user">
-								<img
-									src={require("../images/user.png")}
-									style={{ width: "13px" }}
-								/>{" "}
-							</i>
-							<input
-								type="text"
-								className="login__input"
-								placeholder="User name"
-								autoComplete="off"
-								onChange={handleChange}
-								name="username"
-							/>
-						</div>
-						<div className="login__field">
-							<i className="login__icon fas fa-lock">
-								<img
-									src={require("../images/padlock.png")}
-									style={{ width: "13px" }}
-								/>{" "}
-							</i>
-							<input
-								type="password"
-								className="login__input"
-								placeholder="Password"
-								onChange={handleChange}
-								name="password"
-							/>
-						</div>
-						<div className="login__field">
-							<i className="login__icon fas fa-lock">
-								<img
-									src={require("../images/call.png")}
-									style={{ width: "13px" }}
-								/>{" "}
-							</i>
-							<input
-								type="number"
-								className="login__input"
-								autoComplete="off"
-								placeholder="Moblie No."
-								onChange={handleChange}
-								name="phoneno"
-							/>
-						</div>
-						<div className="validator"></div>
-						<button className="button login__submit">
-							<span className="button__text">Sign Up</span>
-						</button>
-						<div className="newaccount">
-							Have an Account?{" "}
-							<Link to="/" style={{ color: "blue", textDecoration: "none" }}>
-								Log in{" "}
-							</Link>
-						</div>
-					</form>
+		<>
+			{loading && <Loader />}
+			<div className="container">
+				<div className="screen">
+					<div className="screen__content">
+						<img src={"/images/logo.png"} className="loginlogo" alt="logo" />
+						<form className="login" onSubmit={onSignUp}>
+							<div className="login__field">
+								<i className="login__icon fas fa-user">
+									<img
+										src={"/images/user.png"}
+										style={{ width: "13px" }}
+										alt="user"
+									/>{" "}
+								</i>
+								<input
+									type="text"
+									className="login__input"
+									placeholder="User name"
+									autoComplete="off"
+									onChange={handleChange}
+									name="username"
+								/>
+							</div>
+							<div className="login__field">
+								<i className="login__icon fas fa-lock">
+									<img
+										src={"/images/padlock.png"}
+										style={{ width: "13px" }}
+										alt="padlock"
+									/>{" "}
+								</i>
+								<input
+									type="password"
+									className="login__input"
+									placeholder="Password"
+									onChange={handleChange}
+									name="password"
+								/>
+							</div>
+							<div className="login__field">
+								<i className="login__icon fas fa-lock">
+									<img
+										src={"/images/call.png"}
+										style={{ width: "13px" }}
+										alt="call"
+									/>{" "}
+								</i>
+								<input
+									type="number"
+									className="login__input"
+									autoComplete="off"
+									placeholder="Moblie No."
+									onChange={handleChange}
+									name="phoneno"
+								/>
+							</div>
+							<div className="validator"></div>
+							<button className="button login__submit">
+								<span className="button__text">Sign Up</span>
+							</button>
+							<div className="newaccount">
+								Have an Account?{" "}
+								<Link to="/" style={{ color: "blue", textDecoration: "none" }}>
+									Log in{" "}
+								</Link>
+							</div>
+						</form>
+					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 }
 

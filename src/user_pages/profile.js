@@ -3,6 +3,7 @@ import { useAuth } from "../Aunthentication";
 import "../cssfiles/profile.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Loader from "../components/Loader";
 
 export default function Profile() {
 	const { user } = useAuth();
@@ -10,9 +11,11 @@ export default function Profile() {
 	const [resolved, setResolved] = useState();
 	const navigate = useNavigate();
 	const [width, setWidth] = useState(75.2);
+	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
 		setWidth(15);
+		setLoading(true);
 		axios
 			.post(`${process.env.REACT_APP_API_URL}/complaintno.php`, {
 				username: user,
@@ -28,6 +31,9 @@ export default function Profile() {
 					},
 				});
 				console.log(error);
+			})
+			.finally(() => {
+				setLoading(false);
 			});
 
 		axios
@@ -45,11 +51,15 @@ export default function Profile() {
 					},
 				});
 				console.log(error);
+			})
+			.finally(() => {
+				setLoading(false);
 			});
 	}, []);
 
 	return (
 		<>
+			{loading && <Loader />}
 			<div className="profile_container">
 				<div className="circlecontainer">
 					<div className="greetings">

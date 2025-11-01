@@ -7,9 +7,11 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Showdialougue from "../components/showdialougue";
 import { useAuth } from "../Aunthentication";
+import Loader from "../components/Loader";
 
 export default function Water() {
 	const { user } = useAuth();
+	const [loading, setLoading] = useState(false);
 	const [showModal, setShowModal] = useState(false);
 	const navigate = useNavigate();
 	const [formData, setFormData] = useState({
@@ -38,7 +40,7 @@ export default function Water() {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		console.log(formData);
+		setLoading(true);
 		axios
 			.post(`${process.env.REACT_APP_API_URL}/water.php`, formData)
 
@@ -49,7 +51,6 @@ export default function Water() {
 					navigate("/");
 					console.log("USER WAS NOT FOUND couldn't insert complaint");
 				} else {
-					console.log(res.data);
 					navigate("/error", {
 						state: {
 							error: res.data.result,
@@ -65,6 +66,9 @@ export default function Water() {
 						error: error.message,
 					},
 				});
+			})
+			.finally(() => {
+				setLoading(false);
 			});
 
 		setFormData({

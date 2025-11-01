@@ -83,13 +83,13 @@ function ComplaintCard(props) {
 			{expanded && (
 				<div className="complaint-card-content">
 					<p className="complaintid">Complaint ID : {props.id}</p>
-					<p className="statuswrapper">
+					<div className="statuswrapper">
 						<p className="status">
 							Status:{" "}
 							{props.status.charAt(0).toUpperCase() + props.status.slice(1)}
 						</p>
 						<p className="statusvalue page">{getStatusValue()}</p>
-					</p>
+					</div>
 					<button onClick={cancelComplaint} className="cancelBtn">
 						<FontAwesomeIcon icon={faXmark} className="cancelIcon" /> Cancel
 					</button>
